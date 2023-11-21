@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+    <!-- Lógica condicional para mostrar componentes según el rol -->
+    {% if user.is_authenticated %}
+        {% if user.rol == 'admin' %}
+            <div class="admin-component">
+                <!-- Componente para el rol de administrador -->
+            </div>
+        {% elif user.rol == 'usuario' %}
+            <div class="usuario-component">
+                <div class="app-container">
+        <div class="sidebar">
+            <!-- Contenido de la barra lateral -->
+        </div>
+        <div class="app-content">
+            <div class="app-content-header">
+                <h1 class="app-content-headerText">Productos</h1>
+            </div>
+            <div class="products-area-wrapper">
+                <div class="products-grid">
+                    {% for producto in productos %}
+                    <div class="product-card">
+                        <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
+                        <h3>{{ producto.nombre }}</h3>
+                        <p>{{ producto.descripcion }}</p>
+                        <p>Precio: ${{ producto.precio }}</p>
+                        <p>Categoría: {{ producto.categoria }}</p>
+                        <button class="order-button" data-product-id="{{ producto.id }}">Hacer Pedido</button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+            </div>
+        {% else %}
+            <div class="invitado-component">
+                <!-- Componente para el rol de invitado -->
+            </div>
+        {% endif %}
+    {% endif %}
+{% endblock %}

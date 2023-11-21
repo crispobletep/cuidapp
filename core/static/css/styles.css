@@ -1,0 +1,66 @@
+/* Cambiar el fondo de la página */
+body {
+    background-color: #333;
+}
+
+/* Estilo para un contenedor */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Esto ocupa el 100% de la altura de la ventana */
+    background-color: rgba(255, 255, 255, 0.8); /* Color blanco con opacidad */
+    padding: 20px;
+    border-radius: 10px; /* Agrega bordes redondeados si lo deseas */
+}
+
+.content {
+    text-align: center;
+}
+
+/* Estilos para botones */
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+
+/* Cambiar el color de enlaces */
+a {
+    color: #007bff;
+}
+
+/* Estilos para el contenedor del footer */
+.footer-container {
+    background-color: #3E2924;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Estilos para los enlaces en el footer */
+.footer-container a {
+    color: white;
+    text-decoration: none;
+}
+
+h1 {
+    color: white;
+}
+
+nav{
+    
+    font-size: 30px;
+    
+    width: 100%;
+    background-color: rgba(0,0,0,.4);
+
+}
+
+.nav-link{
+    color: white;
+}
+

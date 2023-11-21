@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Categoría</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for producto in productos %}
+        <tr>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.precio }}</td>
+            <td>{{ producto.categoria }}</td>
+            <td>
+                <a href="{% url 'editar_producto' producto.id %}">Editar</a>
+                <a href="{% url 'eliminar_producto' producto.id %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'crear_producto' %}">Crear Producto</a>
+
+
+<h2>Crear Producto</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
+        <br>
+    <label for="descripcion">Descripción:</label>
+    <textarea id="descripcion" name="descripcion" required></textarea>
+        <br>
+    <label for="precio">Precio:</label>
+    <input type="number" id="precio" name="precio" step="0.01" required>
+        <br>
+    <label for="categoria">Categoría:</label>
+    <select id="categoria" name="categoria" required>
+        <option value="categoria1">Categoría 1</option>
+        <option value="categoria2">Categoría 2</option>
+        <option value="categoria3">Categoría 3</option>
+    </select>
+
+    <input type="submit" value="Guardar">
+</form>
+
+{% endblock %}
