@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<section style="background-color: #eee;">
+    <div class="container py-5">
+        <header class="text-center mb-5">
+            <h1 class="display-4">Ofertas de la semana</h1>
+        </header>
+
+        <!-- Card 1: Paracetamol -->
+        <div class="row justify-content-center mb-3">
+            <div class="col-md-12 col-xl-10">
+                <div class="card shadow-0 border rounded-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                                <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                                    <img src="{% static 'img/Paracetamol.jpg' %}" class="w-100" alt="Paracetamol">
+                                    <a href="#!">
+                                        <div class="hover-overlay">
+                                            <div class="mask"
+                                                style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6 col-xl-6">
+                                <h5>Paracetamol 500mg</h5>
+                                <div class="d-flex flex-row">
+                                    <div class="text-danger mb-1 me-2">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <span>500</span>
+                                </div>
+                                <div class="mt-1 mb-0 text-muted small">
+                                    <span>Para aliviar el dolor</span>
+                                    <span class="text-primary"> • </span>
+                                    <span>24 tabletas</span>
+                                    <span class="text-primary"> • </span>
+                                    <span>Condiciones de almacenamiento<br /></span>
+                                </div>
+                                <div class="mb-2 text-muted small">
+                                    <span>Para adultos y niños</span>
+                                    <span class="text-primary"> • </span>
+                                    <span>Disponible sin receta</span>
+                                    <span class="text-primary"> • </span>
+                                    <span>Farmacia<br /></span>
+                                </div>
+                                <p class="text-truncate mb-4 mb-md-0">
+                                    El paracetamol es un medicamento comúnmente utilizado<br> para aliviar el dolor y
+                                    reducir la fiebre.
+                                </p>
+                            </div>
+                            <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
+                                <div class="d-flex flex-row align-items-center mb-1">
+                                    <h4 class="mb-1 me-1">$1.590</h4>
+                                    <span class="text-danger"><s>$1.990</s></span>
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2: Tapsin -->
+        <div class="row justify-content-center mb-3">
+            <div class="col-md-12 col-xl-10">
+                <div class="card shadow-0 border rounded-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                                <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                                    <img src="{% static 'img/Tapsin.jpeg' %}" class="w-100" alt="Tapsin">
+                                    <a href="#!">
+                                        <div class="hover-overlay">
+                                            <div class="mask"
+                                                style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6 col-xl-6">
+                                <h5>Tapsin 500mg</h5>
+                                <div class="d-flex flex-row">
+                                    <div class="text-danger mb-1 me-2">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <span>500</span>
+                                </div>
+                                <div class="mt-1 mb-0 text-muted small">
+                                    <span>Alivia la congestión nasal y los síntomas gripales.</span>
+                                    <span class="text-primary"> • </span>
+                                    <span>Consulte a su médico antes de usar.<br /></span>
+                                </div>
+                                <div class="mb-2 text-muted small">
+                                    <span>Para adultos</span>
+                                    <span class="text-primary"> • </span>
+                                    <span>Envase con 20 tabletas</span>
+                                    <span class="text-primary"> • </span>
+                                    <span>Farmacia<br /></span>
+                                </div>
+                                <p class="text-truncate mb-4 mb-md-0">
+                                    Tapsin es un medicamento utilizado para aliviar la <br>congestión nasal y los
+                                    síntomas gripales.
+                                </p>
+                            </div>
+                            <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
+                                <div class="d-flex flex-row align-items-center mb-1">
+                                    <h4 class="mb-1 me-1">$1.290</h4>
+                                    <span class="text-danger"><s>$1.490</s></span>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3: Ibuprofeno -->
+        <div class="row justify-content-center mb-3">
+            <div class="col-md-12 col-xl-10">
+                <div class="card shadow-0 border rounded-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                                <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                                    <img src="{% static 'img/Ibuprofeno.jpg' %}" class="w-100" alt="Ibuprofeno">
+                                    <a href="#!">
+                                        <div class="hover-overlay">
+                                            <div class="mask"
+                                                style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6 col-xl-6">
+                                <h5>Ibuprofeno 600mg</h5>
+                                <div class="d-flex flex-row">
+                                    <div class="text-danger mb-1 me-2">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <span>600</span>
+                                </div>
+                                <div class="mt-1 mb-0 text-muted small">
+                                    <span>Alivio rápido del dolor y la inflamación.</span>
+                                    <span class="text-primary"> • </span>
+                                    <span>Para adultos y adolescentes. No exceda la dosis recomendada.<br /></span>
+                                </div>
+                                <div class="mb-2 text-muted small">
+                                    <span>Disponible en envases de 30 tabletas</span>
+                                    <span class="text-primary"> • </span>
+                                    <span>Condiciones de almacenamiento.</span>
+                                    <span class="text-primary"> • </span>
+                                    <span>Farmacia<br /></span>
+                                </div>
+                                <p class="text-truncate mb-4 mb-md-0">
+                                    El ibuprofeno es un medicamento antiinflamatorio no <br>esteroideo (AINE) utilizado
+                                    para aliviar el dolor y reducir <br>la fiebre.
+                                </p>
+                            </div>
+                            <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
+                                <div class="d-flex flex-row align-items-center mb-1">
+                                    <h4 class="mb-1 me-1">$1.790</h4>
+                                    <span class="text-danger"><s>$1.990</s></span>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

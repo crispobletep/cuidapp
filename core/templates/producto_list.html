@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Listado de Productos</h2>
+  <div style="display: flex;">
+    <div style="flex: 1; margin-right: 20px;">
+      <h3>{% if edit %}Editar{% else %}Agregar{% endif %} Producto</h3>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+      </form>
+    </div>
+    <div style="flex: 2;">
+      <h3>Listado de Productos</h3>
+      <ul>
+        {% for producto in productos %}
+          <li>
+            <a href="{% url 'producto_detail' pk=producto.pk %}">{{ producto.medicamento.nombre }}</a>
+            | <a href="{% url 'producto_edit' pk=producto.pk %}">Editar</a>
+            | <a href="{% url 'producto_delete' pk=producto.pk %}">Eliminar</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endblock %}

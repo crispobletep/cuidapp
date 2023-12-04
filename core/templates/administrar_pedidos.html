@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+
+
+    <div class="row row-background">
+          <h2>Administración de Pedidos</h2>
+
+      <!-- Listado de Pedidos -->
+      <div class="col-md-12">
+        <div class="card-columns">
+          {% for pedido in pedidos %}
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Medicamento: {{ pedido.receta.medicamento.nombre }}</h5>
+                <p class="card-text">Cliente: {{ pedido.receta.cliente.nombre }}</p>
+                <p class="card-text">Dosis: {{ pedido.receta.dosis }}</p>
+                <p class="card-text">Fecha de pedido: {{ pedido.fecha_pedido }}</p>
+                <p class="card-text">Estado: {{ pedido.get_estado_display }}</p>
+                <p class="card-text">Dirección de envío: {{ pedido.direccion_cliente.direccion }}</p>
+
+                <!-- Agregar más información según sea necesario -->
+                  <br>
+                {% if pedido.estado == 'pendiente' %}
+                <button class="btn btn-primary marcar-listo-btn" data-pedido-id="{{ pedido.id }}">Marcar como listo</button>
+                {% endif %}
+
+                {% if pedido.estado == 'listo' %}
+                <button class="btn btn-warning marcar-pendiente-btn" data-pedido-id="{{ pedido.id }}">Marcar como pendiente</button>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function() {
+        $(".marcar-listo-btn, .marcar-pendiente-btn").click(function() {
+            var button = $(this);
+            var pedidoId = button.data('pedido-id');
+            var url = button.hasClass('marcar-listo-btn') ? '/marcar_como_listo/' : '/marcar_como_pendiente/';
+
+            $.ajax({
+                url: url + pedidoId + '/',
+                type: 'GET',
+                success: function(response) {
+                    var card = button.closest(".card");
+                    card.find(".pedido-listo-msg").remove();
+                    card.append("<p class='pedido-listo-msg text-success'>" + response.message + "</p>");
+
+                    // Puedes hacer más cosas aquí si es necesario
+
+                    setTimeout(function() {
+                        card.find(".pedido-listo-msg").remove();
+                        // Actualizar la página después de 3 segundos
+                        location.reload();
+                    }, 1000);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        });
+    });
+</script>
+
+
+{% endblock %}
+

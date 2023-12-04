@@ -1,0 +1,121 @@
+:root {
+    --body-font: "Poppins", sans-serif;
+    --theme-bg-color: #000; /* Fondo negro similar al del login */
+    --theme-color: #fff;
+    --content-bg: rgba(16, 18, 27, 0.4); /* Fondo con opacidad */
+    --border-color: #ccc;
+}
+
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo del cuerpo de la página */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo del cuerpo de la página */
+body {
+    font-family: "Poppins", sans-serif;
+    background-image: url('https://wallpapershome.com/images/wallpapers/macos-big-sur-1280x720-dark-wwdc-2020-22655.jpg');
+    background-size: cover;
+    margin: 0;
+}
+
+/* Estilos del Navbar */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-logo img {
+    width: 125px;
+    height: 80px; /* Ajusta el tamaño del logo según tus necesidades */
+
+
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+}
+
+.navbar-menu li {
+    margin-right: 20px;
+}
+
+.navbar-menu a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.navbar-text {
+    margin-left: auto;
+    color : white;
+}
+
+/* Contenedor Principal */
+.page-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 150px auto; /* Ajusta el espacio superior según tus necesidades */
+}
+
+/* Estilos de la Página de Inicio */
+.home-page {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos del Pie de Página */
+.footer-container {
+    background-color: #3E2924;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-container a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-container img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+.header {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.row-background {
+    background-color: #ffffff; /* Color blanco */
+    padding: 20px; /* Ajusta el espacio interno según sea necesario */
+    border-radius: 8px; /* Opcional: agrega esquinas redondeadas */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Opcional: agrega una sombra */
+}

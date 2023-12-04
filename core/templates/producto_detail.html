@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Detalle del Producto</h2>
+  <h3>{{ producto.medicamento.nombre }}</h3>
+  <p>Precio: {{ producto.precio }}</p>
+  <p>Categoría: {{ producto.categoria }}</p>
+  <p>Dosis: {{ producto.dosis.all|join:", " }}</p>
+  <img src="{{ producto.imagen.url }}" alt="{{ producto.medicamento.nombre }}" style="max-width: 300px;">
+  <a href="{% url 'producto_list' %}">Volver al listado</a>
+{% endblock %}

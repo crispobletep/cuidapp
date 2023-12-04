@@ -1,0 +1,82 @@
+:root {
+  --body-font: "Poppins", sans-serif;
+  --theme-bg-color: rgba(16, 18, 27, 40%);
+    --theme-color: #f9fafb;
+    --content-bg: rgb(146, 151, 179, 0.13);
+}
+
+body {
+    font-family: var(--body-font);
+    background-image: url(https://wallpapershome.com/images/wallpapers/macos-big-sur-1280x720-dark-wwdc-2020-22655.jpg);
+    background-size: 100% 100%;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2em;
+    width: 100%;
+    height: 100vh;
+    margin: 0; /* Elimina el margen predeterminado del cuerpo para evitar desbordamientos */
+}
+
+
+
+/* Barra lateral */
+.sidebar {
+    width: 240px;
+    background-color: var(--theme-bg-color);
+    color: var(--theme-color);
+    padding: 20px;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-list {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-item {
+    margin-bottom: 10px;
+}
+
+/* Contenido principal */
+.app-content {
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px;
+    background-color: var(--content-bg);
+    border-radius: 14px;
+    backdrop-filter: blur(20px);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.app-content-header {
+    border-bottom: 1px solid var(--border-color);
+    height: 58px;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    white-space: nowrap;
+}
+
+.app-content-headerText {
+    margin: 0;
+}
+
+
+
+/* Otros estilos que puedas necesitar */
+
+/* Cambio de modo de luz y oscuro */
+
+    /* Estilos para el modo claro */
+
+
+/* Otros estilos específicos */

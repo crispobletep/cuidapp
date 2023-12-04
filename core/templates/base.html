@@ -1,0 +1,82 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>Inicio - CuidAPP</title>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <!-- Contenido de tu navbar -->
+        <div class="navbar-logo">
+            <a href="{% url 'pagina_principal' %}">
+                <img src="{% static 'img/logo1.png' %}" alt="Logo">
+            </a>
+        </div>
+
+        <div class="navbar-title">
+            <h1>CuidAPP</h1>
+
+        <ul class="navbar-menu">
+            <li><a href="{% url 'pagina_principal' %}">Inicio</a></li>
+
+            {% if user.rol == 'administrador'%}
+            <li><a href="{% url 'administrar_pedidos' %}">Pedidos</a></li>
+            <li><a href="{% url 'administrar_productos' %}">Productos</a></li>
+            {% endif %}
+
+            {% if user.rol == 'empleado' %}
+            <li><a href="{% url 'administrar_pedidos' %}">Pedidos</a></li>
+            {% endif %}
+
+            {% if user.rol == 'usuario' %}
+            <li><a href="{% url 'mis_pedidos' %}">Mis Pedidos</a></li>
+            {% endif %}
+
+        </ul>
+        </div>
+            <div class="ml-auto">
+                    <p class="navbar-text">Sesión de: {{ user.username }}</p>
+                </div>
+        <div class="navbar-account">
+            <!-- Enlaces para gestionar Sucursal, "Mi Cuenta", Contacto -->
+        </div>
+        <div class="navbar-logout">
+            <a href="{% url 'logout' %}">Cerrar Sesión</a>
+        </div>
+    </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="page-container">
+        <!-- Contenido específico de cada página se colocará aquí -->
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Pie de página -->
+    <footer class="footer-container">
+        <p>
+            <a href="{% url 'quienes_somos' %}">Quiénes Somos</a>
+            <br>  Puerto Madero 9685, Pudahuel | Fono: 28701900
+            
+        </p>
+        <div>
+        <a href="https://api.whatsapp.com/send?phone=56928701900&text=Hola!,%20me%20interesaría%20conocer%20mayor%20información%20sobre%20los%20productos.">Whatsapp<img src="{% static 'img/whatsapp_logo.png' %}" alt="WhatsApp"></a>
+        <a href="https://www.facebook.com/farmacia.espoz/?locale=es_LA">Facebook<img src="{% static 'img/facebook_logo.png' %}" alt="Facebook"></a>
+        <a href="#">Instagram<img src="{% static 'img/instagram_logo.png' %}" alt="Instagram"></a>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
