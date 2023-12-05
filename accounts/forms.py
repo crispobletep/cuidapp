@@ -4,6 +4,7 @@ from django.core.validators import RegexValidator
 
 
 class CrearCuentaForm(forms.ModelForm):
+    rut = forms.CharField(max_length=12, required=True)
     password = forms.CharField(
         widget=forms.PasswordInput,
         validators=[
@@ -16,6 +17,6 @@ class CrearCuentaForm(forms.ModelForm):
 
     class Meta:
         model = Cuenta
-        fields = ['username', 'rol']
+        fields = ['username', 'rut', 'rol']
 
 

@@ -7,18 +7,25 @@
 
       <div class="col-md-12">
         <div class="card-columns">
-            {% if recetas_usuario %}
-            <ul>
-              {% for receta in recetas_usuario %}
-                <li>{{ receta.nombre }} - {{ receta.descripcion }}</li>
-              {% endfor %}
-            </ul>
+          {% if pedidos_cliente %}
+            {% for pedido in pedidos_cliente %}
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Medicamento: {{ pedido.receta.medicamento.nombre }}</h5>
+                  <p class="card-text">Dosis: {{ pedido.receta.dosis.cantidad }} {{ pedido.receta.dosis.unidad }}</p>
+                  <p class="card-text">Fecha de Emisión: {{ pedido.receta.fecha_emision }}</p>
+
+                  <!-- Agregar más información según sea necesario -->
+              </div>
+            </div>
+            {% endfor %}
           {% else %}
-          <br>
+            <br>
             <p>No hay pedidos para mostrar.</p>
           {% endif %}
         </div>
       </div>
     </div>
   </div>
+
 {% endblock %}

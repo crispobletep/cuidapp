@@ -15,6 +15,7 @@ class CuentaManager(BaseUserManager):
 
         user.set_password(password)
         user.save(using=self._db)
+
         return user
 
     def create_superuser(self, username, password, rol='administrador'):
@@ -32,15 +33,18 @@ class Cuenta(AbstractBaseUser, PermissionsMixin):
         ('empleado', 'Empleado'),
     )
 
-    username = models.CharField(max_length=100, unique=True, default='')  # Cambiado de 'usuario' a 'username'
+    username = models.CharField(max_length=100, unique=True, default='')
     rol = models.CharField(max_length=15, choices=ROLES, default='usuario')
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
-    objects = CuentaManager()
+    # Nuevo campo para almacenar el RUT del cliente
+    rut = models.CharField(max_length=12, default='', blank=True)
 
-    USERNAME_FIELD = 'username'  # Cambiado de 'usuario' a 'username'
+    USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['rol']
+
+    objects = CuentaManager()
 
     def set_password(self, password):
         self.password = make_password(password)

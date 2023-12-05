@@ -1,4 +1,5 @@
 from django.db import models
+from accounts.models import Cuenta
 
 
 class Medicamento(models.Model):
@@ -48,6 +49,7 @@ class Producto(models.Model):
 class Cliente(models.Model):
     nombre = models.CharField(max_length=100)
     rut = models.CharField(max_length=12, default='')
+    cuenta = models.ForeignKey(Cuenta, on_delete=models.CASCADE, related_name='cliente', null=True, blank=True)
 
     def __str__(self):
         return self.nombre

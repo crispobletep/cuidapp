@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+    {% load static %}
+
   <div class="container mt-5">
 
     <div class="row row-background" style="text-align: justify;">
 
+      <div class="row row-background" style="text-align: justify;">
+
       <h1 class="text-center mb-5">Quienes Somos</h1>
+
+      <!-- Agrega la imagen debajo del título -->
+      <img src="{% static 'img/Medicamentos.jpg' %}" alt="Imagen de Medicamentos" class="img-fluid">
 
       <h4>Farmacias Espoz S.A.: Líderes en Salud y Compromiso</h4>
       <br><br>

@@ -24,14 +24,19 @@
                 {{ form.password }}
                 <label for="{{ form.password.id_for_label }}" class="form-label">Contraseña</label>
             </div>
+
+            <div class="user-box">
+                {{ form.rut }}
+                <label for="{{ form.rut.id_for_label }}" class="form-label">RUT</label>
+            </div>
             <div class="user-box">
                 {{ form.rol }}
-                <label for="{{ form.rol.id_for_label }}" class="form-label"></label>
             </div>
+
 
             {% for field in form %}
                 {% if field.errors %}
-                    <p class="text-danger" >La contraseña debe tener al menos una mayúscula, un número y un carácter especial.</p>
+                    <p class="text-danger">La contraseña debe tener al menos una mayúscula, un número y un carácter especial.</p>
                 {% endif %}
             {% endfor %}
 
@@ -40,17 +45,17 @@
             <div class="submit-container">
                 <button class="btn btn-primary" type="submit">Registrarse</button>
             </div>
-            </form>
+        </form>
 
-            <br>
+        <br>
 
-            <div class="text-center">
-                <a href="{% url 'home' %}" class="btn btn-danger">Volver</a>
-            </div>
+        <div class="text-center">
+            <a href="{% url 'home' %}" class="btn btn-danger">Volver</a>
+        </div>
 
-            {% if error_message %}
-                <p class="text-danger">{{ error_message }}</p>
-            {% endif %}
+        {% if error_message %}
+            <p class="text-danger">{{ error_message }}</p>
+        {% endif %}
 
     </div>
 </body>

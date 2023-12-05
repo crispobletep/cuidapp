@@ -5,9 +5,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from .forms import CrearCuentaForm
 from .models import Cuenta
-import logging
-
-logger = logging.getLogger(__name__)
+from core.models import Cliente
 
 
 def registro(request):
@@ -17,12 +15,19 @@ def registro(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             rol = form.cleaned_data['rol']
+            rut = form.cleaned_data['rut']
 
             try:
                 user = Cuenta.objects.create_user(username=username, password=password, rol=rol)
+                if rol == 'usuario':
+                    # Crea la instancia de Cliente y asocia al usuario
+                    cliente = Cliente.objects.create(nombre=username, rut=rut, cuenta=user)
+
                 login(request, user)
                 messages.success(request, '¡Registro exitoso! Ahora estás conectado.')
+
                 return redirect('pagina_principal')
+
             except Exception as e:
                 messages.error(request, f'Error en el registro: {str(e)}')
         else:

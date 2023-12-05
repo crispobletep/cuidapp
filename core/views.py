@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Producto, Pedido, Receta
+from .models import Producto, Pedido, Receta, Cliente
 from .forms import ProductoForm
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
@@ -8,7 +8,20 @@ from django.http import JsonResponse
 @login_required
 def pagina_principal(request):
     if request.user.is_authenticated:
-        if request.user.groups.filter(name='administrador').exists():
+        if request.user.rol == 'usuario':
+            # Si el usuario tiene el rol 'usuario', obtén el cliente asociado (si existe)
+            cliente = request.user.cliente.filter().first()
+
+            if cliente:
+                rut_cliente = cliente.rut
+                nombre_cliente = request.user.username
+                return render(request, 'pagina_principal.html', {'rut_cliente': rut_cliente, 'nombre_cliente': nombre_cliente})
+            else:
+                # Manejar el caso en que el usuario no tiene un cliente asociado
+                # Puedes redirigirlo a una página de error o realizar otra acción apropiada.
+                return render(request, 'pagina_principal.html', {'error_message': 'No se encontró un cliente asociado'})
+
+        elif request.user.groups.filter(name='administrador').exists():
             return redirect('administrar_productos')
         elif request.user.groups.filter(name='empleado').exists():
             return redirect('administrar_pedidos')
@@ -78,13 +91,18 @@ def marcar_como_pendiente(request, pedido_id):
 
 
 def mis_pedidos(request):
-    # Asegúrate de que el usuario esté autenticado
     if request.user.is_authenticated:
-        # Verifica si el usuario tiene una cuenta asociada
-        if hasattr(request.user, 'cuenta') and hasattr(request.user.cuenta, 'cliente'):
-            # Filtra las recetas para el cliente asociado a la cuenta del usuario
-            recetas_usuario = Receta.objects.filter(cliente=request.user.cuenta.cliente)
-            return render(request, 'mis_pedidos.html', {'recetas_usuario': recetas_usuario})
-    
-    # Manejo para usuarios no autenticados o sin cuenta/cliente asociado
-    return render(request, 'mis_pedidos.html', {'recetas_usuario': None})
+        try:
+            # Obtén el cliente asociado a la cuenta del usuario
+            cliente = get_object_or_404(Cliente, cuenta=request.user)
+            # Filtra los pedidos para el cliente asociado
+            pedidos_cliente = Pedido.objects.filter(receta__cliente__id=cliente.id)
+            # Obtén el rut del cliente
+            rut_cliente = cliente.rut
+            return render(request, 'mis_pedidos.html', {'pedidos_cliente': pedidos_cliente, 'rut_cliente': rut_cliente})
+        except Cliente.DoesNotExist:
+            # El usuario autenticado no tiene un cliente asociado
+            return render(request, 'mis_pedidos.html', {'pedidos_cliente': None, 'rut_cliente': None})
+    else:
+        # El usuario no está autenticado
+        return render(request, 'mis_pedidos.html', {'pedidos_cliente': None, 'rut_cliente': None})
